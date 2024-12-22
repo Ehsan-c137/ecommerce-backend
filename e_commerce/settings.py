@@ -95,25 +95,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'DISABLE_SERVER_SIDE_CURSORS': True,
-
-        'NAME': "ecommerce",
-
-        'USER': 'root',
-
-        'PASSWORD': "root",
-
-        'HOST': 'postgres',
-
-        'PORT': '5432',
-
-    }
-
+        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+        'PORT': os.getenv('DATABASE_PORT', '5432'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'NAME': os.getenv('DATABASE_NAME'),
+    }    
 }
 
 # Password validation
